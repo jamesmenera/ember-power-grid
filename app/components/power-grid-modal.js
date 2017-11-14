@@ -1,0 +1,1 @@
+export { default } from 'ember-power-grid/components/power-grid-modal';

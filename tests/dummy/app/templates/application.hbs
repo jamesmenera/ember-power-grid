@@ -1,3 +1,64 @@
-<h2 id="title">Welcome to Ember</h2>
+{{#power-grid
+  preview=true
 
-{{outlet}}
+  gridTemplateComlumns="1fr 780px 1fr"
+  gridTemplateRows="40px 1fr 10px"
+  
+  gridTemplateAreas=(grid-template-areas
+    "n h h"
+    "n c c"
+    "n f f"
+  ) as |grid|
+}}
+  
+  {{#grid.area gridArea="h"}}
+    I am the header
+  {{/grid.area}}
+  
+  {{#grid.area gridArea="c"}}
+    I am the content
+    {{outlet}}
+  {{/grid.area}}
+  
+  {{#grid.area gridArea="f"}}
+    I am the footer
+  {{/grid.area}}
+  
+  {{#grid.area gridArea="n"}}
+    {{#power-grid
+      preview=true
+      gridTemplateAreas=(grid-template-areas
+        "l t x"
+        "n s s"
+        "a c c"
+      ) as |nav|
+    }}
+      {{#nav.area gridArea="l"}}
+        logo
+      {{/nav.area}}
+      {{#nav.area gridArea="t"}}
+        title
+      {{/nav.area}}
+      {{#nav.area gridArea="x"}}
+        arrow
+      {{/nav.area}}
+      {{#nav.area gridArea="n"}}
+        nav
+      {{/nav.area}}
+      {{#nav.area gridArea="s"}}
+        sidebar
+      {{/nav.area}}
+      {{#nav.area gridArea="a"}}
+        avatar
+      {{/nav.area}}
+      {{#nav.area gridArea="c"}}
+        <button>
+          Create
+        </button>
+      {{/nav.area}}
+    {{/power-grid}}
+  {{/grid.area}}
+  
+  
+  {{log grid.cssGridArea}}
+{{/power-grid}}
