@@ -11,6 +11,7 @@ export default Component.extend({
     const elem = document.getElementById(this.get('elementId'));
     
     elem.style.backgroundColor = "rgba(0, 0, 0, 0.8)";
+    elem.style.zIndex = 100;
     elem.style.gridColumnStart = 1;
     elem.style.gridRowStart = 1;
     elem.style.gridColumnEnd = this.get('totalColumns') + 1;
