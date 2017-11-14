@@ -22,6 +22,8 @@
   {{#grid.area gridArea="f"}}
     {{#power-grid
       id="application-footer"
+      preview=true
+      gridGap="10px"
       gridTemplateColumns="200px 1fr 240px"
       gridTemplateRows="40px"
       gridTemplateAreas=(grid-template-areas
@@ -61,7 +63,7 @@
         title
       {{/nav.area}}
       {{#nav.area gridArea="x"}}
-        X
+        <button {{action "toggleSideBar"}}>X</button>
       {{/nav.area}}
       {{#nav.area gridArea="n"}}
         nav
