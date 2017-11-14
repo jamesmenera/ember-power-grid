@@ -1,13 +1,12 @@
 {{#power-grid
+  id="application-shell"
   preview=true
-
-  gridTemplateComlumns="1fr 780px 1fr"
-  gridTemplateRows="40px 1fr 10px"
-  
+  gridTemplateColumns="216px 1fr"
+  gridTemplateRows="56px 1fr 40px"
   gridTemplateAreas=(grid-template-areas
-    "n h h"
-    "n c c"
-    "n f f"
+    "n h"
+    "n c"
+    "n f"
   ) as |grid|
 }}
   
@@ -21,15 +20,37 @@
   {{/grid.area}}
   
   {{#grid.area gridArea="f"}}
-    I am the footer
+    {{#power-grid
+      id="application-footer"
+      gridTemplateColumns="200px 1fr 240px"
+      gridTemplateRows="40px"
+      gridTemplateAreas=(grid-template-areas
+        "o p m" 
+      ) as |footer|
+    }}
+      {{#footer.area gridArea="o"}}
+        options
+      {{/footer.area}}
+      
+      {{#footer.area gridArea="p"}}
+        paginator
+      {{/footer.area}}
+      
+      {{#footer.area gridArea="m"}}
+        page of page
+      {{/footer.area}}
+    {{/power-grid}}
   {{/grid.area}}
   
   {{#grid.area gridArea="n"}}
     {{#power-grid
+      id="application-navigation"
       preview=true
+      gridTemplateColumns="56px 1fr 24px"
+      gridTemplateRows="56px 1fr 60px"
       gridTemplateAreas=(grid-template-areas
         "l t x"
-        "n s s"
+        "n sl sr"
         "a c c"
       ) as |nav|
     }}
@@ -40,25 +61,35 @@
         title
       {{/nav.area}}
       {{#nav.area gridArea="x"}}
-        arrow
+        X
       {{/nav.area}}
       {{#nav.area gridArea="n"}}
         nav
       {{/nav.area}}
-      {{#nav.area gridArea="s"}}
-        sidebar
+      {{#nav.area gridArea="sl"}}
+        sidebar left
+      {{/nav.area}}
+      {{#nav.area gridArea="sr"}}
+        ?
       {{/nav.area}}
       {{#nav.area gridArea="a"}}
         avatar
       {{/nav.area}}
       {{#nav.area gridArea="c"}}
-        <button>
+        <button {{action grid.openModal}}>
           Create
         </button>
       {{/nav.area}}
     {{/power-grid}}
   {{/grid.area}}
   
+  {{#if grid.showModal}}
+    {{#grid.modal}}
+      modal
+      
+      <button {{action grid.closeModal}}>Close</button>
+    {{/grid.modal}}
+  {{/if}}
   
   {{log grid.cssGridArea}}
 {{/power-grid}}

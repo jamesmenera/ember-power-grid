@@ -1,0 +1,16 @@
+body {
+  margin: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+#application-shell {
+  width: 100vw;
+  height: 100vh;
+}
+
+#application-navigation {
+  height: 100%;
+}

@@ -3,7 +3,10 @@
   (hash
     cssGridAreaHtml=cssGridAreaHtml
     cssGridArea=cssGridArea
-    area=(component 'power-grid-area' parentId=elementId preview=preview)
-    modal=(component 'power-grid-modal' parentId=elementId preview=preview)
+    showModal=showModal
+    openModal=(action "openModal")
+    closeModal=(action "closeModal")
+    area=(component 'power-grid-area' parentId=elementId preview=preview availableAreas=availableAreas)
+    modal=(component 'power-grid-modal' parentId=elementId preview=preview showModal=showModal totalColumns=totalColumns totalRows=totalRows)
   )
 }}
