@@ -8,6 +8,9 @@ This README outlines the details of collaborating on this Ember addon.
 * `cd ember-power-grid`
 * `npm install`
 
+## Getting Started
+Don't use yet, This is a very alpha build...
+
 ## Running
 
 * `ember serve`
