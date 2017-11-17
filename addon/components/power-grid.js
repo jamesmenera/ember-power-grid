@@ -103,7 +103,6 @@ export default Component.extend({
   didInsertElement() {
     const elem = document.getElementById(this.get('elementId'));
     
-    elem.style.fontFamily = 'Fira Code';
     elem.style.display = 'grid';
     elem.style.gridTemplateAreas = this.get('cssGridArea');
     elem.style.gridGap = this.get('gridGap');
