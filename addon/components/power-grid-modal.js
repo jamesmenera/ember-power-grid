@@ -4,6 +4,7 @@ import { computed } from "@ember/object";
 
 export default Component.extend({
   tagName: 'power-grid-modal',
+  classNames: ['power-grid-modal'],
   layout,
   showModal: false,
   

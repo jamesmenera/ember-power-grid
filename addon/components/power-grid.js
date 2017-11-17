@@ -7,11 +7,9 @@ import { schedule } from "@ember/runloop";
 import { observer } from "@ember/object";
 
 export default Component.extend({
-  init() {
-    this._super(...arguments);
-  },
-  
   tagName: 'power-grid',
+  classNames: ['power-grid'],
+  
   layout,
   gridGap: 0,
   gridColumnGap: 0,

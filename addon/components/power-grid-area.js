@@ -7,6 +7,7 @@ import { next } from "@ember/runloop"
 
 export default Component.extend({
   layout,
+  classNames: ['power-grid-area'],
   classNameBindings: ['areaClass'],
   parentId: null,
   gridArea: null,
