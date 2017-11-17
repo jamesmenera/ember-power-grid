@@ -33,9 +33,9 @@ export default Component.extend({
     elem.style.gridGap = this.get('gridGap');
     
     if (this.get('preview')) {
-      elem.style.border = "1px solid red";
+      elem.style.outline = "1px solid red";
     } else {
-      elem.style.border = 0;
+      elem.style.outline = 0;
     }
   },
   
