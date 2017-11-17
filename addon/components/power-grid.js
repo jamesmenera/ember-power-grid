@@ -14,6 +14,9 @@ export default Component.extend({
   tagName: 'power-grid',
   layout,
   gridGap: 0,
+  gridColumnGap: 0,
+  gridRowGap: 0,
+  
   gridTemplateAreas: null,
   gridTemplateColumns: null,
   gridTemplateRows: null,
@@ -88,6 +91,13 @@ export default Component.extend({
   
   setStyles() {
     const elem = document.getElementById(this.get('elementId'));
+    elem.style.display = 'grid';
+    
+    elem.style.gridTemplateAreas = this.get('cssGridArea');
+    elem.style.gridGap = this.get('gridGap');
+    elem.style.gridColumnGap = this.get('gridColumnGap');
+    elem.style.gridRowGap = this.get('gridRowGap');
+    
     elem.style.gridTemplateColumns = this.get('gridTemplateColumns');
     elem.style.gridTemplateRows = this.get('gridTemplateRows')
     elem.style.gridAutoColumns = this.get('gridAutoColumns');
@@ -101,12 +111,6 @@ export default Component.extend({
   },
   
   didInsertElement() {
-    const elem = document.getElementById(this.get('elementId'));
-    
-    elem.style.display = 'grid';
-    elem.style.gridTemplateAreas = this.get('cssGridArea');
-    elem.style.gridGap = this.get('gridGap');
-    
     this.setStyles();
   },
   
