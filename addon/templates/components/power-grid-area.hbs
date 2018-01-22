@@ -1,3 +1,9 @@
 {{#if (in-array availableAreas gridArea ) }}
   {{yield}}
+  
+  {{#if showInfo}}
+    <div>
+      {{gridArea}}
+    </div>
+  {{/if}}
 {{/if}}

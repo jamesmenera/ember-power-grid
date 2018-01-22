@@ -2,7 +2,7 @@ import Component from '@ember/component';
 import layout from '../templates/components/power-grid-area';
 import { computed } from "@ember/object";
 import { observer } from "@ember/object";
-import { schedule } from "@ember/runloop";
+// import { schedule } from "@ember/runloop";
 import { next } from "@ember/runloop"
 
 export default Component.extend({
@@ -13,6 +13,7 @@ export default Component.extend({
   gridArea: null,
   gridGap: null,
   preview: false,
+  showInfo: false,
   
   updateStyles: observer('gridArea', 'gridGap', 'preview', function() {
     next(() => {

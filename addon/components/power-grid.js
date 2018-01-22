@@ -5,10 +5,15 @@ import { htmlSafe } from '@ember/string';
 import { A } from "@ember/array";
 import { schedule } from "@ember/runloop";
 import { observer } from "@ember/object";
+import { getOwner } from "@ember/application";
+// import { inject } from "@ember/service";
 
 export default Component.extend({
   tagName: 'power-grid',
   classNames: ['power-grid'],
+  // powerGrid: inject(),
+  
+  instanceName: 'main',
   
   layout,
   gridGap: 0,
@@ -31,6 +36,28 @@ export default Component.extend({
   updateStyle: observer('gridGap', 'gridTemplateAreas', 'gridTemplateColumns', 'gridTemplateRows', 'gridAutoColumns', 'gridAutoRows', 'preview', function(){
     this.setStyles();
   }),
+  
+  registerNamedInstance(grid){
+    let owner = getOwner(grid);
+    
+//    debugger;
+    
+    if (owner && owner.resolveRegistration(`grid:${grid.get('instanceName')}`)) {
+      // console.error(`You are attempting to register 'grid:${grid.get('instanceName')}' but it already exists`);
+      
+      return;
+    }
+    
+    getOwner(grid).register(`grid:${grid.get('instanceName')}`);
+  },
+  
+  unregisterNamedInstance(grid){
+    let owner = getOwner(grid);
+    
+    if (owner && owner.resolveRegistration(`grid:${grid.get('instanceName')}`)) {
+      owner.unregister(`grid:${grid.get('instanceName')}`);
+    }
+  },
   
   createGrid(gridTemplateAreas, type) {
     const elementId = this.get('elementId');
@@ -110,6 +137,11 @@ export default Component.extend({
   
   didInsertElement() {
     this.setStyles();
+    this.registerNamedInstance(this);
+  },
+  
+  willDestroyElement() {
+    this.unregisterNamedInstance(this);
   },
   
   actions: {
